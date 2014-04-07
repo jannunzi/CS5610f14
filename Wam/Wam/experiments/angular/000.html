@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app>
+<head>
+    <title></title>
+    <script src="js/angular.js"></script>
+</head>
+<body>
+    <h1>sdfsdf</h1>
+    {{1 + 2}}
+
+    <label ng-controller="myController">
+        {{ name }}
+    </label>
+
+    <div ng-controller="employees">
+        <form ng-submit="addEmployee()">
+            <input ng-model="firstName"/>
+            <input ng-model="lastName" />
+            <button>Add</button>
+            <!--button ng-click="addEmployee()">Add</button-->
+        </form>
+        <ul>
+            <li ng-repeat="employee in employees" ng-show="employee.salary == 225000">
+                {{employee.firstName}} {{employee.lastName}}
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <ul ng-controller="widgetController">
+            <li></li>
+        </ul>
+    </div>
+
+    <script>
+        function myController($scope) {
+            $scope.name = "Joe";
+        }
+        function employees($scope) {
+            $scope.employees = [
+                { firstName: "Alice", lastName: "Wonderland", salary: 225000 },
+                { firstName: "Charlie", lastName: "Garcia", salary: 155000 }
+            ];
+            $scope.addEmployee = function() {
+                var firstName = $scope.firstName;
+                var lastName = $scope.lastName;
+                var employee = { firstName: firstName, lastName: lastName };
+                $scope.employees.push(employee);
+            }
+        }
+
+        function widgetController($scope) {
+            $scope.widgets = [
+                { type: "BUTTON", label: "Ok" },
+                { type: "TEXT" }
+            ];
+        }
+
+    </script>
+</body>
+</html>
