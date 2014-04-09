@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
+<head>
+    <title></title>
+    <script src="js/angular.js"></script>
+</head>
+<body>
+
+    <section ng-controller="signupController">
+        <h2>Login</h2>
+        <input ng-model="username" />
+        <button ng-click="login(username)">Login</button>
+
+        <h2>My Signup Sheets</h2>
+        <input ng-model="newSheetName" /><button ng-click="addSheet(newSheetName)">Add Sheet</button>
+        <table>
+            <tr ng-repeat="sheet in sheets">
+                <td>
+                    {{sheet.name}}
+                </td>
+                <td>
+                    <input ng-model="newName" />
+                    <button ng-click="removeSheet(sheet)">X</button>
+                    <button ng-click="selectSheet(sheet)">Select</button>
+                    <button ng-click="renameSheet(sheet, newName)">Rename</button>
+                </td>
+            </tr>
+        </table>
+        <h2>Selected Signup Sheet</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>How Many</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="signup in selectedSheet.signups">
+                    <td>asdf</td>
+                </tr>
+            </tbody>
+        </table>
+        {{selectedSheet}}
+        <h2>Debugging</h2>
+        {{sheets}}
+    </section>
+    <script>
+        var app = angular.module("app", []);
+
+        app.controller("signupController", ["$scope", function ($scope) {
+            $scope.login = function (username) {
+                console.log(username);
+            };
+            $scope.renameSheet = function (sheet, newName) {
+                sheet.name = newName;
+            };
+            $scope.selectSheet = function (sheet) {
+                $scope.selectedSheet = sheet;
+                console.log(sheet);
+            };
+            $scope.removeSheet = function (sheet) {
+                var index = $scope.sheets.indexOf(sheet);
+                if (index > -1) {
+                    $scope.sheets.splice(index, 1);
+                }
+            };
+            $scope.addSheet = function (newSheetName) {
+                var newSheet = { name: newSheetName };
+                $scope.sheets.push(newSheet);
+            };
+            $scope.sheets = [
+                {
+                    name: "Event 1",
+                    date: "2014-01-01",
+                    description: "Description 1",
+                    signups: [
+                        {
+                            time: "10:00",
+                            count: 12,
+                            name: "Alice",
+                            topic: "Project"
+                        },
+                        {
+                            time: "12:00",
+                            count: 12,
+                            name: "John",
+                            topic: "Project"
+                        }
+                    ]
+                },
+                {
+                    name: "Event 2",
+                    date: "2014-02-01",
+                    description: "Description 2",
+                    signups: [
+                        {
+                            time: "11:00",
+                            count: 12,
+                            name: "Charlie",
+                            topic: "Project"
+                        },
+                        {
+                            time: "13:00",
+                            count: 12,
+                            name: "Edward",
+                            topic: "Project"
+                        }
+                    ]
+                }
+            ];
+        }]);
+    </script>
+</body>
+</html>

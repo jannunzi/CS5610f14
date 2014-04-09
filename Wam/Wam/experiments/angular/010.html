@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app>
+<head>
+    <title>Angular</title>
+    <script src="js/angular.js"></script>
+</head>
+<body>
+    <section ng-controller="model1Controller">
+        <h1>Model 1</h1>
+
+        {{model1}}
+
+    </section>
+
+    <section ng-controller="model2Controller">
+        <h1>Model 2</h1>
+
+        {{model2}}
+
+    </section>
+
+    <script>
+        function model1Controller($scope) {
+            $scope.model1 = "Name 1";
+        }
+
+        function model2Controller($scope) {
+            $scope.model2 = "Name 2";
+        }
+    </script>
+</body>
+</html>

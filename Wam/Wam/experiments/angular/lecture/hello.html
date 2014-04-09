@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <script src="js/angular.js"></script>
+    <title></title>
+</head>
+<body ng-app>
+    <div class="container">
+        <div class="row" ng-controller="myController">
+            <div class="col-xs-12">
+                <h2>Angular Controllers</h2>
+                Username: {{username}}<br />
+                Title: {{title}}<br />
+                Applications: {{applications}}<br />
+                Word Price: {{applications[1].name}} {{applications[1].price | currency}}
+            </div>
+            <div class="col-xs-12">
+                <h2>All Applications</h2>
+                <input ng-model="newAppName" />
+                <input ng-model="newAppPrice" />
+                <button ng-click="addNewApplication(newAppName, newAppPrice)">Add Application</button>
+                <table class="table">
+                    <tr ng-repeat="application in applications">
+                        <td>{{application.name}}</td>
+                        <td>{{application.price | currency}}</td>
+                        <td><button ng-click="removeApplication(application)">Delete</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        {{username}}
+        <h2>Angular Models</h2>
+        <input ng-model="name" />
+        <input ng-model="salary" />
+        <br/>
+        Hello {{name | uppercase}}
+        {{salary | currency}}
+        <h2>Angular Expressions</h2>
+        2+5={{2+5}}
+    </div>
+    <script>
+        function myController($scope) {
+            $scope.removeApplication = function(application) {
+                var index = $scope.applications.indexOf(application);
+                console.log(index);
+                $scope.applications.splice(index, 1);
+            }
+            $scope.addNewApplication = function (name, price) {
+                var newApp = { id: 123, name: name, price: price };
+                $scope.applications.push(newApp);
+            }
+            $scope.username = "alice";
+            $scope.title = "My Awesome App";
+            $scope.applications = [
+                { id: 1, name: "Keynote", price: 0.0 },
+                {id: 2, name: "Word", price: 99.0}
+            ];
+        }
+    </script>
+</body>
+</html>

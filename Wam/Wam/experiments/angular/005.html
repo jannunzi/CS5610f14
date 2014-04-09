@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app>
+<head>
+    <title></title>
+    <script src="js/angular.js"></script>
+</head>
+<body>
+
+    <div ng-controller="applicationController">
+        <h1>Angular Click</h1>
+
+        <input ng-model="applicationName" />
+        <button ng-click="addApplication(applicationName)">Add</button>
+        <ul>
+            <li ng-repeat="application in applications">
+                {{application.id}}
+                {{application.name}}
+                <button ng-click="deleteApplication(application.id)">Delete</button>
+            </li>
+        </ul>
+
+    </div>
+
+    <h1>Angular Controllers</h1>
+
+    <h2>All Employees</h2>
+    <ul ng-controller="employeesController">
+        <li ng-repeat="employee in employees">
+            {{employee.firstName}} {{employee.lastName}} ${{employee.salary}}
+        </li>
+    </ul>
+
+    <h2>NG Show</h2>
+    <ul ng-controller="employeesController">
+        <li ng-repeat="employee in employees" ng-show="employee.salary > 300000">
+            {{employee.firstName}} {{employee.lastName}} ${{employee.salary}}
+        </li>
+    </ul>
+
+    <h1>Angular Models</h1>
+
+    <input ng-model="name" />
+
+    <p>Hello {{name}}</p>
+
+    <h1>Angular Expressions</h1>
+
+    2+5={{2+5}}
+
+    <script>
+        function applicationController($scope) {
+            $scope.deleteApplication = function (appId) {
+                for (var id in $scope.applications) {
+                    var app = $scope.applications[id];
+                    if (app.id === appId) {
+                        $scope.applications.splice(id, 1);
+                        break;
+                    }
+                }
+            };
+            $scope.addApplication = function (name) {
+                var size = $scope.applications.length + 1;
+                $scope.applications.push({id: size, name: name});
+            };
+            $scope.applications = [
+                { id: 1, name: "Keynote" },
+                { id: 2, name: "Pages" },
+                { id: 3, name: "Numbers" },
+                { id: 4, name: "Word" }
+            ];
+        }
+        function employeesController($scope) {
+            var employees = [
+                { firstName: "Alice", lastName: "Wonderland", salary: 123321 },
+                { firstName: "Bob", lastName: "Marley", salary: 234432 },
+                { firstName: "Chalie", lastName: "Garcia", salary: 345543 }
+            ];
+            $scope.employees = employees;
+        }
+    </script>
+</body>
+</html>

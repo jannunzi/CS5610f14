@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="jooners">
+<head>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <title></title>
+    <script src="js/angular.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12" ng-controller="sheetsController">
+                <h3>Sign up sheets I created</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Event</th>
+                            <th>Controls</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input class="form-control" ng-model="newSheetEventName" />
+                            </td>
+                            <td>
+                                <button class="btn-success btn" ng-click="addNewSheet(newSheetEventName)">+</button>
+                            </td>
+                        </tr>
+                        <tr ng-repeat="sheet in sheets">
+                            <td>{{sheet.event}}</td>
+                            <td>
+                                <button ng-click="removeSheet(sheet)" class="btn-danger btn">X</button>
+                            </td>
+                            <td>
+                                <button ng-click="selectSheet(sheet)" class="btn-danger btn">X</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>Selected Sheet</h3>
+                {{selectedSheet}}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var jooners = angular.module("jooners", []);
+
+        jooners.controller("sheetsController",
+            ["$scope", function ($scope) {
+                $scope.selectSheet = function (sheet) {
+                    $scope.selectedSheet = sheet;
+                }
+                $scope.addNewSheet = function(eventName) {
+                    var newSheet = { event: eventName };
+                    $scope.sheets.push(newSheet);
+                }
+                $scope.removeSheet = function(sheet) {
+                    var index = $scope.sheets.indexOf(sheet);
+                    $scope.sheets.splice(index, 1);
+                }
+                $scope.sheets = [
+                    {
+                        event: "Office Hours Tuesday April 15th",
+                        description: "Sign up for office hours.",
+                        location: "310A West Village H",
+                        organizer: "Jose Annunziato",
+                        email: "jannunzi@gmail.com",
+                        date: "2014-02-03",
+                        time: "10:10",
+                        signups: [
+                            { time: "10:10", count: 1, who: "Alice", topic: "Project" },
+                            { time: "10:15", count: 1, who: "Bob", topic: "Project" },
+                            { time: "10:30", count: 1, who: "Charlie", topic: "Project" },
+                            { time: "10:45", count: 1, who: "Dan", topic: "Project" }
+                        ]
+                    },
+                    {
+                        event: "Office Hours Friday April 18th",
+                        description: "Sign up for office hours.",
+                        location: "310A West Village H",
+                        organizer: "Jose Annunziato",
+                        email: "jannunzi@gmail.com",
+                        date: "2014-02-03",
+                        time: "10:10",
+                        signups: [
+                            { time: "10:10", count: 1, who: "Alice", topic: "Project" },
+                            { time: "10:15", count: 1, who: "Bob", topic: "Project" },
+                            { time: "10:30", count: 1, who: "Charlie", topic: "Project" },
+                            { time: "10:45", count: 1, who: "Dan", topic: "Project" }
+                        ]
+                    }
+                ];
+        }]);
+
+    </script>
+</body>
+</html>

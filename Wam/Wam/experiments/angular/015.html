@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app>
+<head>
+    <title>Angular</title>
+    <script src="js/angular.js"></script>
+</head>
+<body>
+    <section ng-controller="applicationController">
+        <h1>Users</h1>
+
+        <input ng-model="username" />
+        <button ng-click="addUser(username)">Add User</button>
+        <ul>
+            <li ng-repeat="user in model">
+                <span ng-click="selectUser(user)">{{user.name}}</span>
+                <ul>
+                    <li ng-repeat="application in user.applications">
+                        {{application.name}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <h1>Applications</h1>
+
+        <input ng-model="appname" />
+        <button ng-click="addApplication(appname)">Add Application</button>
+        <ul>
+            <li ng-repeat="application in selectedUser.applications">
+                <span
+                      ng-click="selectApplication(application)">
+                        {{application.name}}
+                </span>
+                <button ng-click="removeApplication(application.id)">Remove</button>
+            </li>
+        </ul>
+
+        <h1>Pages</h1>
+
+        <ul>
+            <li ng-repeat="page in selectedApplication.pages">
+                {{page.name}}
+            </li>
+        </ul>
+
+        <h1>Selected User</h1>
+
+        <span>
+            {{selectedUser}}
+        </span>
+
+        <h1>Test</h1>
+
+        <ul>
+            <li ng-repeat="app in apps">
+                {{app}}
+            </li>
+        </ul>
+
+        <ul>
+            <li ng-repeat="user in users">
+                {{user}}
+            </li>
+        </ul>
+
+    </section>
+
+    <script>
+        function applicationController($scope) {
+            $scope.removeApplication = function (applicationId) {
+                delete $scope.selectedUser.applications[applicationId];
+            }
+            $scope.selectApplication = function (application) {
+                $scope.selectedApplication = application;
+            }
+            $scope.selectUser = function (user) {
+                $scope.selectedUser = user;
+            }
+            $scope.addUser = function (username) {
+                $scope.model[username] = { name: username };
+            }
+            $scope.addApplication = function (applicationName) {
+                $scope.selectedUser.applications[applicationName] = { name: applicationName };
+            }
+            $scope.model = {
+                user1: {
+                    id: "user1",
+                    name: "User1",
+                    applications: {
+                        app1: {
+                            id: "app1",
+                            name: "App1",
+                            pages: {
+                                page1: {
+                                    id: "page1",
+                                    name: "Page 1",
+                                    widgets: {
+                                        widget1: {
+                                            id: "widget1",
+                                            type: "TEXT"
+                                        },
+                                        widget2: {
+                                            id: "widget2",
+                                            type: "RADIO"
+                                        }
+                                    }
+                                },
+                                page2: {
+                                    id: "page2",
+                                    name: "Page 2",
+                                    widgets: {
+                                        widget3: {
+                                            id: "widget3",
+                                            type: "CHECK"
+                                        },
+                                        widget4: {
+                                            id: "widget4",
+                                            type: "SELECT"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        app2: {
+                            id: "app2",
+                            name: "App2",
+                            pages: {
+                                page3: {
+                                    id: "page3",
+                                    name: "Page 3",
+                                    widgets: {
+                                        widget5: {
+                                            id: "widget5",
+                                            type: "CHECK"
+                                        },
+                                        widget6: {
+                                            id: "widget6",
+                                            type: "SELECT"
+                                        }
+                                    }
+                                },
+                                page4: {
+                                    id: "page4",
+                                    name: "Page 4",
+                                    widgets: {
+                                        widget7: {
+                                            id: "widget7",
+                                            type: "CHECK"
+                                        },
+                                        widget8: {
+                                            id: "widget8",
+                                            type: "SELECT"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                user2: {
+                    id: "user2",
+                    name: "User2",
+                    applications: {
+                        app3: {
+                            id: "app3",
+                            name: "App3",
+                            pages: {
+                                page5: {
+                                    id: "page5",
+                                    name: "Page 5"
+                                },
+                                page6: {
+                                    id: "page6",
+                                    name: "Page 6"
+                                }
+                            }
+                        },
+                        app4: {
+                            id: "app4",
+                            name: "App4",
+                            pages: {
+                                page7: {
+                                    id: "page7",
+                                    name: "Page 7"
+                                },
+                                page8: {
+                                    id: "page8",
+                                    name: "Page 8"
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+            $scope.apps = {
+                app1: "App1",
+                app2: "App2"
+            };
+            $scope.users = [
+                "user1",
+                "user2"
+            ];
+        }
+    </script>
+</body>
+</html>

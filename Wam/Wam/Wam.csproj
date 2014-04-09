@@ -222,7 +222,17 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="experiments\angular\000.html" />
+    <Content Include="experiments\angular\005.html" />
+    <Content Include="experiments\angular\020.html" />
+    <Content Include="experiments\angular\015.html" />
+    <Content Include="experiments\angular\010.html" />
+    <Content Include="experiments\angular\030.html" />
+    <Content Include="experiments\angular\025.html" />
     <Content Include="experiments\angular\js\angular.js" />
+    <Content Include="experiments\angular\lecture\css\bootstrap.css" />
+    <Content Include="experiments\angular\lecture\hello.html" />
+    <Content Include="experiments\angular\lecture\jooners.html" />
+    <Content Include="experiments\angular\lecture\js\angular.js" />
     <Content Include="experiments\hello\hello.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

@@ -20,6 +20,12 @@
             <!--button ng-click="addEmployee()">Add</button-->
         </form>
         <ul>
+            <li ng-repeat="employee in employees">
+                {{employee.firstName}} {{employee.lastName}}
+            </li>
+        </ul>
+
+        <ul>
             <li ng-repeat="employee in employees" ng-show="employee.salary == 225000">
                 {{employee.firstName}} {{employee.lastName}}
             </li>
