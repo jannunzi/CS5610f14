@@ -1,0 +1,26 @@
+﻿<h2>Sites</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Site Name</th>
+            <th>Site Description</th>
+            <th>Controls</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input ng-model="newSiteName" class="form-control"/></td>
+            <td><input ng-model="newSiteDescription" class="form-control" /></td>
+            <td><button class="btn btn-success" ng-click="addSite()">Add</button></td>
+        </tr>
+        <tr ng-repeat="site in sites">
+            <td>{{site.name}}</td>
+            <td>{{site.description}}</td>
+            <td>
+                <button class="btn btn-danger" ng-click="deleteSite(site)">Delete</button>
+                <a href="#sites/{{site.id}}/towers" class="btn btn-primary">Edit</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

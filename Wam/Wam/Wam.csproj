@@ -265,6 +265,15 @@
     <Content Include="experiments\angular\lecture\hello.html" />
     <Content Include="experiments\angular\lecture\jooners.html" />
     <Content Include="experiments\angular\lecture\js\angular.js" />
+    <Content Include="experiments\angular\sites\css\bootstrap.css" />
+    <Content Include="experiments\angular\sites\index.html" />
+    <Content Include="experiments\angular\sites\js\angular-route.min.js" />
+    <Content Include="experiments\angular\sites\js\angular.min.js" />
+    <Content Include="experiments\angular\sites\js\app.js" />
+    <Content Include="experiments\angular\sites\js\data.js" />
+    <Content Include="experiments\angular\sites\partials\equipments.html" />
+    <Content Include="experiments\angular\sites\partials\sites.html" />
+    <Content Include="experiments\angular\sites\partials\towers.html" />
     <Content Include="experiments\hello\hello.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

@@ -1,0 +1,56 @@
+﻿<h2>Equipments</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Field</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Tower Name</td>
+            <td><input ng-model="tower.name" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>Tower Height</td>
+            <td><input ng-model="tower.height" class="form-control" /></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <a href="#sites/{{site.id}}/towers" class="btn btn-primary">Cancel</a>
+                <a href="#sites/{{site.id}}/towers" class="btn btn-danger">Delete</a>
+                <button class="btn btn-success">Update</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Equipments</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Equipment Name</th>
+            <th>Equipment Brand</th>
+            <th>Controls</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input ng-model="newEquipmentName" class="form-control" /></td>
+            <td><input ng-model="newEquipmentBrand" class="form-control" /></td>
+            <td><input ng-model="newEquipmentPrice" class="form-control" /></td>
+            <td><button class="btn btn-success">Add</button></td>
+        </tr>
+        <tr ng-repeat="equipment in equipments">
+            <td>{{equipment.name}}</td>
+            <td>{{equipment.brand}}</td>
+            <td>{{equipment.price}}</td>
+            <td>
+                <button class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
