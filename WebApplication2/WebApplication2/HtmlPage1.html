@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <!--script src="Scripts/jquery-1.10.2.js"></script-->
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap.min.flatly.css" rel="stylesheet" />
+    <style>
+        body {
+            padding-top: 70px;
+            padding-bottom: 70px;
+        }
+    </style>
+</head>
+<body ng-app="phonecatApp">
+    <div ng-view>
+    </div>
+    <script>
+
+        var sampleApp = angular.module('phonecatApp', ['ngRoute']);
+
+        sampleApp.config(['$routeProvider',
+          function ($routeProvider) {
+            $routeProvider.
+            when('/allFish', {
+                templateUrl: 'templates/allFish.html',
+                controller: 'FishController'
+            }).
+            when('/addFish', {
+                templateUrl: 'templates/addFish.html',
+                controller: 'FishController'
+            }).
+            otherwise({
+                redirectTo: '/'
+            });
+        }]);
+
+
+
+        sampleApp.controller('FishController', function ($scope, $http) {
+
+            $http.get("api/Values")
+            .success(function (fishes) {
+                $scope.fishes = fishes;
+            });
+
+        });
+
+//        function FishController($scope, $http) {
+            /*
+                        var fish123 = {
+                            caughtDate: "2014-10-19T08:08:00",
+                            caughtTime: "12:23:34",
+                            clarity: 2,
+                            depth: 9,
+                            girth: 123,
+                            length: 45,
+                            name: "Fish 123 123 123",
+                            notes: "To the right of death rock",
+                            presentation: "345",
+                            species: "Striped Bass",
+                            spot: "234",
+                            temperature: 62,
+                            tripId: 2,
+                            weight: 55
+                        };
+
+                        $http.post("api/Values", fish123)
+                        .success(function (response) {
+                            console.log(response);
+                        })
+                        .error(function (response) {
+                            console.log("error");
+                            console.log(response);
+                        });
+                        */
+  //      }
+    </script>
+</body>
+</html>

@@ -257,6 +257,16 @@
     <Content Include="experiments\angular\060\partials\profile.html" />
     <Content Include="experiments\angular\css\bootstrap.css" />
     <Content Include="experiments\angular\050\js\app.js" />
+    <Content Include="experiments\angular\f360\css\bootstrap.css" />
+    <Content Include="experiments\angular\f360\js\data.js" />
+    <Content Include="experiments\angular\f360\partials\fish.html" />
+    <Content Include="experiments\angular\f360\index.html" />
+    <Content Include="experiments\angular\f360\js\angular-route.min.js" />
+    <Content Include="experiments\angular\f360\js\angular.min.js" />
+    <Content Include="experiments\angular\f360\js\app.js" />
+    <Content Include="experiments\angular\f360\partials\login.html" />
+    <Content Include="experiments\angular\f360\partials\profile.html" />
+    <Content Include="experiments\angular\f360\partials\trip.html" />
     <Content Include="experiments\angular\js\angular-resource.min.js" />
     <Content Include="experiments\angular\js\angular-route.min.js" />
     <Content Include="experiments\angular\js\angular.js" />
