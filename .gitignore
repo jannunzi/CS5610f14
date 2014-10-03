@@ -154,3 +154,10 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+
+**/.metadata/
+**/bin/
+**/Servers/
+**/RemoteSystemsTempFiles/
+**/test.txt
+**/node_modules
