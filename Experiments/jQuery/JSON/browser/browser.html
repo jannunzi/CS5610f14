@@ -1,0 +1,172 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+    $(function () {
+        var root = $("#json-root");
+        console.log(root);
+        var children = root.children();
+        console.log(children);
+        browsable(children);
+    });
+
+    function browsable(elements) {
+        $(elements).each(function (index, element) {
+            var element = $(element);
+            console.log([index, element]);
+            var jsonKey = element.find("> .json-key");
+            var jsonValue = element.find("> .json-value");
+            console.log([jsonKey.text(), jsonValue.text()]);
+            jsonKey.click(function () {
+                console.log("ewq");
+                var siblings = $(this).siblings("ul");
+                console.log(siblings);
+                browsable(siblings);
+            });
+        })
+    }
+
+
+</script>
+
+<div id="json-browser">
+
+</div>
+
+<div id="json-viewer">
+    <ul id="json-root">
+      <li><span class="json-key childless">Attempted:</span> <span class=
+      "json-value">EditUser</span></li>
+
+      <li>
+        <span class="json-key">Exception:</span>
+
+        <ul>
+          <li><span class="json-key childless">Message:</span> <span class=
+          "json-value">Something</span></li>
+
+          <li><span class="json-key childless">TargetSite:</span> <span class=
+          "json-value">somewhere</span></li>
+
+          <li>
+            <span class="json-key">Inner Exception:</span>
+
+            <ul>
+              <li><span class="json-key childless">Message:</span> <span class=
+              "json-value">Something else</span></li>
+
+              <li><span class="json-key childless">TargetSite:</span> <span class=
+              "json-value">somewhere.core</span></li>
+
+              <li>
+                <span class="json-key">Inner Exception:</span>
+
+                <ul>
+                  <li><span class="json-key childless">Message:</span> <span class=
+                  "json-value">Another message</span></li>
+
+                  <li><span class="json-key childless">TargetSite:</span> <span class=
+                  "json-value">something.core.subr</span></li>
+
+                  <li>
+                    <span class="json-key">Inner Exception:</span>
+
+                    <ul>
+                      <li><span class="json-key childless">Message:</span> <span class=
+                      "json-value">Object reference not set to an instance of an
+                      object.</span></li>
+
+                      <li><span class="json-key childless">TargetSite:</span>
+                      <span class="json-value">System.Web.Mvc.ActionResult Update(Int32,
+                      System.String, System.String)</span></li>
+
+                      <li>
+                        <span class="json-key">StackTrace:</span>
+
+                        <ul>
+                          <li>
+                            <span class="json-key">0:</span>
+
+                            <ul style="display: block;">
+                              <li><span class="json-key childless">a:</span> <span class=
+                              "json-value">123</span></li>
+
+                              <li><span class="json-key childless">b:</span> <span class=
+                              "json-value">234</span></li>
+                            </ul>
+                          </li>
+
+                          <li>
+                            <span class="json-key">1:</span>
+
+                            <ul style="display: block;">
+                              <li><span class="json-key childless">a:</span> <span class=
+                              "json-value">123</span></li>
+
+                              <li><span class="json-key childless">b:</span> <span class=
+                              "json-value">234</span></li>
+                            </ul>
+                          </li>
+
+                          <li>
+                            <span class="json-key">2:</span>
+
+                            <ul style="display: block;">
+                              <li><span class="json-key childless">a:</span> <span class=
+                              "json-value">123</span></li>
+
+                              <li><span class="json-key childless">b:</span> <span class=
+                              "json-value">234</span></li>
+                            </ul>
+                          </li>
+
+                          <li>
+                            <span class="json-key">3:</span>
+
+                            <ul style="display: block;">
+                              <li><span class="json-key childless">a:</span> <span class=
+                              "json-value">123</span></li>
+
+                              <li><span class="json-key childless">b:</span> <span class=
+                              "json-value">234</span></li>
+                            </ul>
+                          </li>
+
+                          <li>
+                            <span class="json-key">4:</span>
+
+                            <ul style="display: none;">
+                              <li><span class="json-key childless">a:</span> <span class=
+                              "json-value">123</span></li>
+
+                              <li><span class="json-key childless">b:</span> <span class=
+                              "json-value">234</span></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+
+                      <li><span class="json-key">Inner Exception:</span></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <span class="json-key">details:</span>
+
+        <ul>
+          <li><span class="json-key childless">userEmail:</span> <span class=
+          "json-value">test@email.com</span></li>
+
+          <li><span class="json-key childless">userId:</span> <span class=
+          "json-value">25</span></li>
+
+          <li><span class="json-key childless">userRole:</span> <span class=
+          "json-value">User</span></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
